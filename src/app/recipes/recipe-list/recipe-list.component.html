@@ -1,0 +1,8 @@
+<button mat-raised-button color="accent">New Recipe</button>
+<div class="py-2">
+    <hr>
+</div>
+<div>
+    <app-recipe-item *ngFor="let item of recipes" [recipe]="item">
+    </app-recipe-item>
+</div>
