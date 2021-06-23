@@ -1,8 +1,12 @@
-<button mat-raised-button color="accent">New Recipe</button>
+<button mat-raised-button color="accent" (click)="onNewRecipe()">New Recipe</button>
 <div class="py-2">
-    <hr>
+  <hr />
 </div>
 <div>
-    <app-recipe-item *ngFor="let item of recipes" [recipe]="item">
-    </app-recipe-item>
+  <app-recipe-item
+    *ngFor="let item of recipes; let i = index"
+    [recipe]="item"
+    [index]="i"
+  >
+  </app-recipe-item>
 </div>

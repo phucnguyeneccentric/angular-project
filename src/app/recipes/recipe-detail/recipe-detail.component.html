@@ -1,33 +1,27 @@
-<div class="flex">
-    <img src="{{ recipe.imagePath  }}" width="120" height="120" alt="{{ recipe.name }}">
+<img src="{{ recipe.imagePath }}" class="w-1/2" alt="{{ recipe.name }}" />
+<h1>{{ recipe.name }}</h1>
+<div>
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">
+    Manage Recipe
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="onAddToShoppingList()">
+      To Shopping List
+    </button>
+    <button mat-menu-item routerLink="edit">Edit Recipe</button>
+    <button mat-menu-item>Delete Recipe</button>
+  </mat-menu>
 </div>
-<div class="flex">
-    <h1>{{ recipe.name }}</h1>
-</div>
-<div class="flex">
-    <div>
-        <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Manage Recipe</button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="onAddToShoppingList()">To Shopping List</button>
-            <button mat-menu-item>Edit Recipe</button>
-            <button mat-menu-item>Delete Recipe</button>
-        </mat-menu>
-    </div>
-</div>
-<div class="flex">
-    {{ recipe.description }}
-</div>
+<p class="flex">
+  {{ recipe!.description }}
+</p>
 <div class="flex flex-col">
-    <p>
-        Ingredients
-    </p>
-    <ul class="list-disc">
-        <li *ngFor="let ingredient of recipe.ingredients">
-            <a style="cursor: pointer">
-                {{ ingredient.name }} - {{ ingredient.amount }}
-            </a>
-        </li>
-    </ul>
-
-
+  <p>Ingredients</p>
+  <ul class="list-disc list-inside">
+    <li *ngFor="let ingredient of recipe.ingredients">
+      <a style="cursor: pointer">
+        {{ ingredient.name }} - {{ ingredient.amount }}
+      </a>
+    </li>
+  </ul>
 </div>

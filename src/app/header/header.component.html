@@ -1,15 +1,21 @@
-<nav class="flex flex-wrap items-center py-4 px-2">
-    <div >
-        <button mat-button href="#" class="text-2xl">Recipe Book</button>
-        <button mat-button (click)="onSelect('recipes')">Recipes</button>
-        <button mat-button (click)="onSelect('shopping-list')">Shopping List</button>
-    </div>
-    <div class="flex-grow"></div>
-    <div >
-        <button mat-button [matMenuTriggerFor]="menu">Manage</button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>Save Data</button>
-            <button mat-menu-item>Fetch Dâta</button>
-        </mat-menu>
-    </div>
-</nav>
+<header>
+  <div>
+    <a mat-button [routerLink]="['/']" class="text-2xl">Recipe Book</a>
+    <button mat-button routerLink="./recipes" class="pb-4">
+      Recipes
+      <div routerLinkActive="active"></div>
+    </button>
+    <button mat-button [routerLink]="['shopping-list']">
+      Shopping List
+      <div routerLinkActive="active"></div>
+    </button>
+  </div>
+  <div class="flex-grow"></div>
+  <div>
+    <button mat-button [matMenuTriggerFor]="menu">Manage</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Save Data</button>
+      <button mat-menu-item>Fetch Dâta</button>
+    </mat-menu>
+  </div>
+</header>

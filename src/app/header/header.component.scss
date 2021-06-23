@@ -1,4 +1,9 @@
-nav {
-  background-color: steelblue;
+header {
+  @apply flex flex-wrap items-center py-4 px-2 filter drop-shadow-md bg-blue-500;
+
   color: white;
+}
+
+.active {
+  @apply h-1 bg-white transition duration-500 ease-in-out;
 }

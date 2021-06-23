@@ -1,33 +1,28 @@
 const { guessProductionMode } = require("@ngneat/tailwind");
 
-process.env.TAILWIND_MODE = guessProductionMode() ? 'build' : 'watch';
+process.env.TAILWIND_MODE = guessProductionMode() ? "build" : "watch";
 
 module.exports = {
-  prefix: '',
-  mode: 'jit',
+  prefix: "",
+  mode: "jit",
   purge: {
     enabled: true,
-    content: [
-      './src/**/*.{html,ts,css,scss,sass,less,styl}',
-    ]
+    content: ["./src/**/*.{html,ts,css,scss,sass,less,styl}"],
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {
-      
-    },
+    extend: {},
   },
   variants: {
     extend: {},
   },
   plugins: [
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
-    require('@tailwindcss/typography')
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/line-clamp"),
+    require("@tailwindcss/typography"),
   ],
   corePlugins: {
     // ...
- 
-  }
+  },
 };

@@ -1,9 +1,19 @@
-<a href="#" class="flex flex-wrap border-2 py-3 px-6 my-1.5 mr-2" (click)="onSelected()">
-    <div class="flex-auto">
-        <h1 class="list-group-item-heading">{{ recipe.name }}</h1>
-        <p class="list-group-item-text">{{ recipe.description }}</p>
+<div routerLinkActive="bg-blue-200" [routerLinkActiveOptions]="{ exact: true }">
+  <a
+    matRipple
+    routerLink="{{ index }}"
+    class="flex items-center border-2 py-3 px-3 md:my-1.5 hover:cursor-pointer"
+  >
+    <div class="flex-auto w-2/3 md:pr-3">
+      <h1 class="list-group-item-heading">{{ recipe.name }}</h1>
+      <p class="list-group-item-text justify-center truncate ">
+        {{ recipe.description }}
+      </p>
     </div>
-    <span class="flex justify-end items-center">
-        <img [src]="recipe.imagePath" alt="{{ recipe.name }}" style="max-height: 50px;">
-    </span>
-</a>
+    <img
+      class="flex flex-auto w-1/3  items-center"
+      [src]="recipe.imagePath"
+      alt="{{ recipe.name }}"
+    />
+  </a>
+</div>
