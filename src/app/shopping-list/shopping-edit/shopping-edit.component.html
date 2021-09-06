@@ -1,26 +1,74 @@
-<form>
-  <div class="flex justify-between md:flex-wrap">
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <div class="flex flex-col lg:space-y-0">
     <mat-form-field>
       <mat-label>Favorite food</mat-label>
-      <input matInput placeholder="Ex. Pizza" #nameInput />
+      <input
+        matInput
+        placeholder="Ex. Pizza"
+        name="name"
+        #name="ngModel"
+        ngModel
+        required
+      />
+      <mat-error *ngIf="name.hasError('required')"
+        >food name is required!!</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Amount</mat-label>
-      <input matInput type="number" min="0" #amountInput />
+      <input
+        matInput
+        type="number"
+        name="amount"
+        ngModel
+        #amount="ngModel"
+        appRangeValidator
+        [minRange]="minAmount"
+        [maxRange]="maxAmount"
+        required
+      />
       <span matSuffix>pc</span>
+      <mat-error *ngIf="amount.hasError('required') && amount.touched"
+        >amount is required!</mat-error
+      >
+      <mat-error
+        *ngIf="amount.errors?.rangeNumber && !amount.hasError('required')"
+      >
+        số lượng không được lớn hơn {{ maxAmount }} và nhỏ nhất là
+        {{ minAmount }}
+      </mat-error>
     </mat-form-field>
   </div>
-  <div class="flex flex-row flex-wrap space-x-4">
+
+  <div
+    class="
+      flex flex-col
+      space-y-2
+      lg:space-y-0 lg:flex-row
+      flex-wrap
+      lg:space-x-4
+    "
+  >
     <button
       mat-raised-button
       color="primary"
-      type="button"
-      (click)="addIngredient()"
+      type="submit"
+      [disabled]="form.invalid"
     >
-      Add
+      {{ editMode ? "Cập nhật" : "Thêm" }}
     </button>
-    <button mat-raised-button color="accent" type="button">Delete</button>
-    <button mat-raised-button color="warn" type="button">Clear</button>
+    <button
+      mat-raised-button
+      [disabled]="!editMode"
+      color="accent"
+      type="button"
+      (click)="onDelete()"
+    >
+      Xóa
+    </button>
+    <button mat-raised-button color="warn" type="button" (click)="onClear()">
+      Clear
+    </button>
   </div>
 </form>

@@ -2,8 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* You can add global styles to this file, and also import other style files */
-
 html,
 body {
   height: 100%;
@@ -16,8 +14,4 @@ body {
 
 button:focus {
   outline: none;
-}
-
-input[type="number"]:focus {
-  box-shadow: none;
 }

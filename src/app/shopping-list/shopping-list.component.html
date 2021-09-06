@@ -1,13 +1,16 @@
-<div class="flex flex-wrap py-4 px-6">
-  <div class="w-2/6">
+<div class="flex flex-wrap py-4 px-6 ">
+  <div class="w-full lg:w-1/2">
     <app-shopping-edit></app-shopping-edit>
+
     <hr class="my-2" />
-    <ul class="list-disc">
-      <li *ngFor="let ingredient of ingredients">
-        <a style="cursor: pointer">
-          {{ ingredient.name }} ({{ ingredient.amount }})
-        </a>
-      </li>
-    </ul>
+    <!-- list of ingredients -->
+    <mat-selection-list [multiple]="false" class="divide-y">
+      <mat-list-option
+        *ngFor="let ingredient of ingredients; let i = index"
+        (click)="onEditItem(i)"
+      >
+        {{ ingredient.name }} (số lượng: {{ ingredient.amount }})
+      </mat-list-option>
+    </mat-selection-list>
   </div>
 </div>

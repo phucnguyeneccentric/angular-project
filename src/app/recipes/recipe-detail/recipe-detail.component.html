@@ -1,6 +1,5 @@
 <img src="{{ recipe.imagePath }}" class="w-1/2" alt="{{ recipe.name }}" />
 <h1>{{ recipe.name }}</h1>
-<div>
   <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">
     Manage Recipe
   </button>
@@ -9,10 +8,9 @@
       To Shopping List
     </button>
     <button mat-menu-item routerLink="edit">Edit Recipe</button>
-    <button mat-menu-item>Delete Recipe</button>
+    <button mat-menu-item (click)="onDeleteRecipe()">Delete Recipe</button>
   </mat-menu>
-</div>
-<p class="flex">
+<p>
   {{ recipe!.description }}
 </p>
 <div class="flex flex-col">
